@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:pav.tictactoe.ViewModels"
+             xmlns:c="clr-namespace:pav.tictactoe.Converters"
+             x:Class="pav.tictactoe.Views.GamePage"
+             Title="Game">
+    <ContentPage.BindingContext>
+        <vm:GamePageViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <c:IntToPieceConverter x:Key="intToPieceConverter" />
+    </ContentPage.Resources>
+    <StackLayout Padding="10">
+        <Grid x:Name="Game_Grid"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Column="0" Grid.Row="0" x:Name="TopLeft_Button"
+                    Text="{Binding TopLeft, Converter={StaticResource intToPieceConverter}}"
+                    Command="{Binding CellSelectedCommand}" CommandParameter="0" />
+            <Button Grid.Column="1" Grid.Row="0" x:Name="TopCenter_Button"
+                    Text="{Binding TopCenter, Converter={StaticResource intToPieceConverter}}"
+                    Command="{Binding CellSelectedCommand}" CommandParameter="3" />
+            <Button Grid.Column="2" Grid.Row="0" x:Name="TopRight_Button"
+                    Text="{Binding TopRight, Converter={StaticResource intToPieceConverter}}"
+                    Command="{Binding CellSelectedCommand}" CommandParameter="6"/>
+
+            <Button Grid.Column="0" Grid.Row="1" x:Name="MiddleLeft_Button"
+                    Text="{Binding CenterLeft, Converter={StaticResource intToPieceConverter}}"
+                    Command="{Binding CellSelectedCommand}" CommandParameter="1"/>
+            <Button Grid.Column="1" Grid.Row="1" x:Name="MiddleCenter_Button"
+                    Text="{Binding CenterCenter, Converter={StaticResource intToPieceConverter}}"
+                    Command="{Binding CellSelectedCommand}" CommandParameter="4"/>
+            <Button Grid.Column="2" Grid.Row="1" x:Name="MiddleRight_Button"
+                    Text="{Binding CenterRight, Converter={StaticResource intToPieceConverter}}"
+                    Command="{Binding CellSelectedCommand}" CommandParameter="7"/>
+
+            <Button Grid.Column="0" Grid.Row="2" x:Name="BottomLeft_Button"
+                    Text="{Binding BottomLeft, Converter={StaticResource intToPieceConverter}}"
+                    Command="{Binding CellSelectedCommand}" CommandParameter="2"/>
+            <Button Grid.Column="1" Grid.Row="2" x:Name="BottomCenter_Button"
+                    Text="{Binding BottomCenter, Converter={StaticResource intToPieceConverter}}"
+                    Command="{Binding CellSelectedCommand}" CommandParameter="5"/>
+            <Button Grid.Column="2" Grid.Row="2" x:Name="BottomRight_Button"
+                    Text="{Binding BottomRight, Converter={StaticResource intToPieceConverter}}"
+                    Command="{Binding CellSelectedCommand}" CommandParameter="8"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>
+
+
